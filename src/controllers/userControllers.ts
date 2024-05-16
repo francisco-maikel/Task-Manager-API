@@ -36,7 +36,9 @@ export const userControllers = {
 
       const { name, email, password } = userSchema.parse(req.body);
 
-      return res.status(201).json({ message: "User created!" });
+      const userCreate = await userServices.crete({ name, email, password }, );
+
+      return res.status(201).json({ message: "User created!", userCreate });
     } catch (error) {
       return next(error);
     }
